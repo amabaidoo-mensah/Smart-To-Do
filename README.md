@@ -29,14 +29,17 @@ The project is currently under development. This stage focuses on the user onboa
 ## Project Structure
 
 ```text
-Smart To-Do/
+Smart-To-Do/
 │
+├── README.md
+├── form.png
 ├── index.html
 ├── todo.html
 ├── style.css
-├── functionality.js
-└── form.png
+└── functionality.js
 ```
+## First Visit Page
+![Smart To-Do Onboarding Form](./screenshots/form.png)
 
 ## How It Works
 
