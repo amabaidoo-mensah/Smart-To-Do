@@ -62,18 +62,26 @@ body::after {
     z-index: 1;
 
 }
+.logo {
+    display: block;
+    font-size: 35px;
+    text-align: center;
+}
 
 h1 {
     margin-bottom: 10px;
     line-height: 1.1;
     color: #040404fc;
     font-weight: 900;
+    text-align: center;
 }
 
 
 .container > p {
     color: rgba(0, 0, 0, 0.805);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 15px;
 }
 
 
