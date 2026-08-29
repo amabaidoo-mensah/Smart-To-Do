@@ -10,7 +10,7 @@ form.addEventListener("submit",(event)=>{
    let userName = identity.value;
    let userOccupation = occupation.value;
 
- // Saving the information
+ // Save the information as an object
   const user = {
     username: userName,
     useroccupation: userOccupation
@@ -19,5 +19,8 @@ form.addEventListener("submit",(event)=>{
 localStorage.setItem("userInfo", JSON.stringify(user));
 
  form.reset();
+
+ //Switch to the To-Do page
+ window.location.href = "to-do.html"
 
 })
