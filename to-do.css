@@ -8,6 +8,8 @@ body {
     background-color: #8976b7;
 }
 
+
+
 .container {
     background-color: white;
     display: flex;
@@ -16,49 +18,68 @@ body {
     min-height: calc(100vh - 40px);
     margin: 20px auto;
     border-radius: 15px;
-
 }
 
+
+
+
 aside {
-    width: 130px;
+    width: 170px;
     background-color: rgba(131, 131, 132, 0.379);
     border-radius: 10px;
     margin: 10px;
-    text-align: center;
-
 }
-
-aside li{
-    display: flex;
-    gap: 12px;
-    
-}
-aside ul{
-    padding: 15px;
-     display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-
 
 aside h4 {
+    text-align: center;
     font-size: 1.2rem;
     font-weight: 600;
     margin-top: 20px;
     margin-bottom: 50px;
-
 }
 
-li {
+
+
+aside ul {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+aside li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 8px;
     list-style-type: none;
-
+    cursor: pointer;
+    transition: 0.3s;
 }
+
+
+
+aside li i {
+    font-size: 1rem;
+}
+
+
+
+aside li:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    
+}
+
+
 
 main {
     margin: 10px;
     flex: 1;
 }
+
+
+
 
 header {
     background-color: #a18cd1;
@@ -66,28 +87,58 @@ header {
     flex-direction: row;
     padding: 12px;
     justify-content: space-between;
+    align-items: center;
     border-radius: 10px;
     gap: 10px;
 }
+
+
+
 
 .headerActions {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 18px;
 }
 
 
-.headerActions button {
-    width: 30px;
+
+
+.searchBox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.35);
+    padding: 4px 12px;
+    border-radius: 9px;
+}
+
+.searchBox i {
+    font-size: 0.9rem;
+}
+
+.searchBox input {
+    width: 160px;
     height: 25px;
+    background: transparent;
     border: none;
-    border-radius: 5px;
-    font-size: 1.0rem;
-
+    outline: none;
+    padding: 0;
 }
 
-input {
-    background-color: rgba(217, 217, 217, 0.296);
-    width: 80%;
-    border: none;
-    border-radius: 10px;
+.searchBox input::placeholder {
+    color: #555;
+}
+
+
+
+
+.headerActions > i {
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.headerActions > i:hover {
+    transform: scale(1.1);
 }
