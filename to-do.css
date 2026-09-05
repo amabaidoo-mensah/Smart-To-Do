@@ -28,6 +28,18 @@ aside {
 
 }
 
+aside li{
+    display: flex;
+    gap: 12px;
+    
+}
+aside ul{
+    padding: 15px;
+     display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 
 
 aside h4 {
@@ -36,12 +48,6 @@ aside h4 {
     margin-top: 20px;
     margin-bottom: 50px;
 
-}
-
-ul {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
 }
 
 li {
