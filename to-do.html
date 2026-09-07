@@ -7,8 +7,7 @@
 
     <link rel="stylesheet" href="to-do.css">
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <title>Smart To-Do</title>
 </head>
@@ -61,10 +60,7 @@
                     <div class="searchBox">
                         <i class="fa-solid fa-magnifying-glass"></i>
 
-                        <input 
-                            type="text" 
-                            placeholder="Search tasks..."
-                        >
+                        <input type="text" placeholder="Search tasks...">
                     </div>
 
                     <i class="fa-solid fa-moon"></i>
@@ -74,6 +70,43 @@
                 </div>
 
             </header>
+
+            <section class="dashboard">
+
+                <div class="cardContainer">
+                    <div class="statCard">
+                        <h3>Total Tasks</h3>
+                        <p>12</p>
+                    </div>
+
+                    <div class="statCard">
+                        <h3>Pending</h3>
+                        <p>7</p>
+                    </div>
+
+                    <div class="statCard">
+                        <h3>Completed</h3>
+                        <p>5</p>
+                    </div>
+
+                </div>
+
+                <div class="dashboardContent">
+
+                    <div class="tasks">
+                       <div class="taskHeader">
+                         <h3>Today's Tasks</h3>
+                         <button> + Add Task</button>
+                       </div>
+                        <div class="list"></div>
+                    </div>
+
+                    <div class="calendar">
+                        <h3>Calendar</h3>
+                    </div>
+
+                </div>
+            </section>
 
         </main>
 
