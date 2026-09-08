@@ -23,7 +23,8 @@
 
             <ul>
 
-                <li>
+                <li class="active">
+
                     <i class="fa-solid fa-house"></i>
                     Dashboard
                 </li>
@@ -94,15 +95,38 @@
                 <div class="dashboardContent">
 
                     <div class="tasks">
-                       <div class="taskHeader">
-                         <h3>Today's Tasks</h3>
-                         <button> + Add Task</button>
-                       </div>
+                        <div class="taskHeader">
+                            <h3>Today's Tasks</h3>
+                            <button id="addTaskBtn"> + Add Task</button>
+                        </div>
                         <div class="list"></div>
                     </div>
-
                     <div class="calendar">
-                        <h3>Calendar</h3>
+
+                        <div class="calendarHeader">
+                            <button id="prevMonth">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+
+                            <h3 id="monthYear"></h3>
+
+                            <button id="nextMonth">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+
+                        <div class="calendarDays">
+                            <span>Sun</span>
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                        </div>
+
+                        <div class="calendarDates" id="calendarDates"></div>
+
                     </div>
 
                 </div>
@@ -112,6 +136,54 @@
 
     </div>
 
+    <!-- Add task form -->
+    <div class="modal" id="taskModal">
+
+        <div class="modalContent">
+
+            <div class="modalHeader">
+                <h3>Add New Task</h3>
+                <button type="button" class="closeModal">&times;</button>
+            </div>
+
+            <form id="taskForm">
+
+                <p>
+                    <label for="tTitle">Task Title</label>
+                    <input type="text" id="tTitle" name="title">
+                </p>
+
+                <p>
+                    <label for="describe">Description</label>
+                    <textarea name="describe" id="describe" cols="30" rows="5"></textarea>
+                </p>
+
+                <p>
+                    <label for="date">Due Date</label>
+                    <input type="date" id="date" name="date">
+                </p>
+
+                <p>
+                    <label for="priority">Priority</label>
+                    <select name="priority" id="priority">
+                        <option value="">Select Priority</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </p>
+
+                <div class="formActions">
+                    <button type="button" class="cancelBtn">Cancel</button>
+                    <button type="submit" class="saveBtn">Save Task</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+    <script src="functionality.js"></script>
 </body>
 
 </html>
