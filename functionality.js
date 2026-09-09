@@ -22,7 +22,7 @@ if (form) {
     form.reset();
 
     // Switch to the To-Do page
-    window.location.href = "to-do.html";
+    window.location.href = "dashboard.html";
   });
 }
 
