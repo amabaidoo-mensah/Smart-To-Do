@@ -30,8 +30,10 @@
                 </li>
 
                 <li>
+                    <a href="my-tasks.html">
                     <i class="fa-solid fa-list-check"></i>
                     My Tasks
+                    </a>
                 </li>
 
                 <li>
@@ -54,7 +56,7 @@
 
             <header>
 
-                <p>Welcome back, (name)</p>
+                <p>Welcome back, <span id="userName"></span></p>
 
                 <div class="headerActions">
 
@@ -75,19 +77,20 @@
             <section class="dashboard">
 
                 <div class="cardContainer">
+                    
                     <div class="statCard">
                         <h3>Total Tasks</h3>
-                        <p>12</p>
+                        <p id="totalTasks">0</p>
                     </div>
 
                     <div class="statCard">
                         <h3>Pending</h3>
-                        <p>7</p>
+                        <p id="pendingTasks">0</p>
                     </div>
 
                     <div class="statCard">
                         <h3>Completed</h3>
-                        <p>5</p>
+                        <p id="completedTasks">0</p>
                     </div>
 
                 </div>
