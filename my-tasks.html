@@ -5,13 +5,17 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>My Tasks | To-do</title>
+
     <link rel="stylesheet" href="to-do.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
+
 <body id="tasksBg">
+
     <div class="container">
 
         <!-- Sidebar -->
@@ -47,20 +51,29 @@
 
         </aside>
 
-          <!-- Main Content -->
+
+        <!-- Main Content -->
         <main>
 
+            <!-- Header -->
             <header id="headColor">
 
-                <p>Welcome back, <span id="userName"></span></p>
+                <p>
+                    Welcome back,
+                    <span id="userName"></span>
+                </p>
+
 
                 <div class="headerActions">
 
                     <div class="searchBox">
+
                         <i class="fa-solid fa-magnifying-glass"></i>
 
                         <input type="text" placeholder="Search tasks...">
+
                     </div>
+
 
                     <i class="fa-solid fa-moon"></i>
 
@@ -71,10 +84,193 @@
             </header>
 
 
+            <!-- My Tasks -->
+            <section class="myTasks">
+
+
+                <!-- Heading -->
+                <div class="taskHeading">
+
+                    <div id="taskHead">
+
+                        <div class="head">
+
+                            <h3>My Tasks</h3>
+
+                            <p>
+                                Manage and organize all your tasks
+                            </p>
+
+                        </div>
+
+
+                        <button id="addTaskBtn">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                            Add Task
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Filters -->
+                <div class="taskFilters">
+
+                    <button class="filterBtn active">
+                        All
+                    </button>
+
+                    <button class="filterBtn">
+                        Pending
+                    </button>
+
+                    <button class="filterBtn">
+                        Completed
+                    </button>
+
+                </div>
+
+
+                <!-- Task Count -->
+                <div class="taskCount">
+
+                    <h3>
+                        All Tasks · 0
+                    </h3>
+
+                </div>
+
+
+                <!-- Tasks will be created by JavaScript -->
+                <div class="taskList"></div>
+
+
+            </section>
+
         </main>
+
     </div>
 
+
+    <!-- Add Task Modal -->
+    <div class="modal" id="taskModal">
+
+        <div class="modalContent">
+
+
+            <!-- Modal Header -->
+            <div class="modalHeader">
+
+                <h3>
+                    Add New Task
+                </h3>
+
+
+                <button type="button" class="closeModal">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <!-- Task Form -->
+            <form id="taskForm">
+
+
+                <!-- Task Title -->
+                <p>
+
+                    <label for="tTitle">
+                        Task Title
+                    </label>
+
+                    <input type="text" id="tTitle" name="title" required>
+
+                </p>
+
+
+                <!-- Description -->
+                <p>
+
+                    <label for="describe">
+                        Description
+                    </label>
+
+                    <textarea name="describe" id="describe" cols="30" rows="5" required></textarea>
+
+                </p>
+
+
+                <!-- Due Date -->
+                <p>
+
+                    <label for="date">
+                        Due Date
+                    </label>
+
+                    <input type="date" id="date" name="date" required>
+
+                </p>
+
+
+                <!-- Priority -->
+                <p>
+
+                    <label for="priority">
+                        Priority
+                    </label>
+
+                    <select name="priority" id="priority" required>
+
+                        <option value="">
+                            Select Priority
+                        </option>
+
+                        <option value="low">
+                            Low
+                        </option>
+
+                        <option value="medium">
+                            Medium
+                        </option>
+
+                        <option value="high">
+                            High
+                        </option>
+
+                    </select>
+
+                </p>
+
+
+                <!-- Buttons -->
+                <div class="formActions">
+
+                    <button type="button" class="cancelBtn">
+                        Cancel
+                    </button>
+
+
+                    <button type="submit" class="saveBtn">
+                        Save Task
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+
     <script src="functionality.js"></script>
+
 </body>
 
 </html>
