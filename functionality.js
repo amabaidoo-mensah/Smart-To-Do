@@ -139,18 +139,9 @@ function updateStats() {
 
 updateStats();
 
-<<<<<<< HEAD
+
+
 // ADD TASK MODAL
-
-
-=======
-
-
-// ==============================
-// ADD TASK MODAL
-// ==============================
-
->>>>>>> c2a120f8c4551f071be3a85b941e5ebe3de6aac3
 const addTaskBtn =
   document.getElementById("addTaskBtn");
 
