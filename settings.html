@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="to-do.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Settings | To-do</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside>
+
+            <h4>Smart To-Do</h4>
+
+            <ul>
+
+                <li>
+
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </li>
+
+                <li>
+                    <a href="my-tasks.html">
+                        <i class="fa-solid fa-list-check"></i>
+                        My Tasks
+                    </a>
+                </li>
+
+                <li>
+                    <a href="calendar.html">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        Calendar
+                    </a>
+                </li>
+
+                <li class="active">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </li>
+
+            </ul>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main>
+
+            <header>
+
+                <p>Welcome back, <span id="userName"></span></p>
+
+                <div class="headerActions">
+
+                    <div class="searchBox">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input type="text" placeholder="Search tasks...">
+                    </div>
+
+                    <i class="fa-solid fa-moon"></i>
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+            </header>
+            <section class="settingsPage">
+
+                <div class="settingsHeading">
+
+                    <h2>Settings</h2>
+
+                    <p>
+                        Manage your preferences and account settings
+                    </p>
+
+                </div>
+
+
+                <!-- Profile -->
+
+                <div class="settingsCard">
+
+                    <div class="settingsCardHeading">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <div>
+                            <h3>Profile</h3>
+                            <p>Manage your personal information</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="settingsForm">
+
+                        <div class="settingsField">
+
+                            <label for="settingsName">
+                                Name
+                            </label>
+
+                            <input type="text" id="settingsName">
+
+                        </div>
+
+
+                        <div class="settingsField">
+
+                            <label for="settingsOccupation">
+                                Role
+                            </label>
+
+                            <select id="settingsOccupation">
+
+                                <option value="student">
+                                    Student
+                                </option>
+
+                                <option value="employee-professional">
+                                    Employee / Professional
+                                </option>
+
+                                <option value="freelancer">
+                                    Freelancer
+                                </option>
+
+                                <option value="entrepreneur">
+                                    Entrepreneur
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <button id="saveProfile">
+                            Save Changes
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Appearance -->
+
+                <div class="settingsCard">
+
+                    <div class="settingsCardHeading">
+
+                        <i class="fa-solid fa-palette"></i>
+
+                        <div>
+                            <h3>Appearance</h3>
+                            <p>Customize how Smart To-Do looks</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="settingsOption">
+
+                        <div>
+                            <h4>Dark Mode</h4>
+
+                            <p>
+                                Switch between light and dark appearance
+                            </p>
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" id="darkModeToggle">
+
+                            <span></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Preferences -->
+
+                <div class="settingsCard">
+
+                    <div class="settingsCardHeading">
+
+                        <i class="fa-solid fa-sliders"></i>
+
+                        <div>
+                            <h3>Preferences</h3>
+                            <p>Manage your task preferences</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="settingsOption">
+
+                        <div>
+                            <h4>Notifications</h4>
+
+                            <p>
+                                Receive notifications about your tasks
+                            </p>
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" id="notificationToggle">
+
+                            <span></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+    </div>
+    <script src="functionality.js"></script>
+</body>
+
+</html>
