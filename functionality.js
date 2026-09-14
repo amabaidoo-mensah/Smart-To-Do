@@ -1,138 +1,159 @@
+// =========================
 // LOGIN / ONBOARDING
+// =========================
 
-const form = document.getElementById("loginForm");
+const form =
+    document.getElementById("loginForm");
 
 const identity =
-  document.getElementById("name");
+    document.getElementById("name");
 
 const occupation =
-  document.getElementById("occupation");
+    document.getElementById("occupation");
 
 
 if (form) {
 
-  form.addEventListener("submit", (event) => {
+    form.addEventListener(
+        "submit",
+        (event) => {
 
-    event.preventDefault();
+            event.preventDefault();
+
+            const userName =
+                identity.value;
+
+            const userOccupation =
+                occupation.value;
+
+            const user = {
+
+                username: userName,
+
+                useroccupation:
+                    userOccupation
+
+            };
 
 
-    const userName =
-      identity.value;
-
-    const userOccupation =
-      occupation.value;
-
-
-    const user = {
-
-      username: userName,
-
-      useroccupation: userOccupation
-
-    };
+            localStorage.setItem(
+                "userInfo",
+                JSON.stringify(user)
+            );
 
 
-    localStorage.setItem(
-      "userInfo",
-      JSON.stringify(user)
+            form.reset();
+
+
+            window.location.href =
+                "dashboard.html";
+
+        }
     );
-
-
-    form.reset();
-
-
-    window.location.href =
-      "dashboard.html";
-
-  });
 
 }
 
 
+// =========================
 // DISPLAY USER NAME
+// =========================
 
 const nameDisplay =
-  JSON.parse(
-    localStorage.getItem("userInfo")
-  );
+    JSON.parse(
+        localStorage.getItem(
+            "userInfo"
+        )
+    );
 
 
 const nameD =
-  document.getElementById("userName");
+    document.getElementById(
+        "userName"
+    );
 
 
 if (nameDisplay && nameD) {
 
-  nameD.textContent =
-    nameDisplay.username;
+    nameD.textContent =
+        nameDisplay.username;
 
 }
 
-// GET SAVED TASKS
 
+// =========================
+// TASK DATA
+// =========================
 
 let userTaskInfo =
-  JSON.parse(
-    localStorage.getItem("taskInfo")
-  ) || [];
+    JSON.parse(
+        localStorage.getItem(
+            "taskInfo"
+        )
+    ) || [];
 
 
-// STAT CARDS
-
+// =========================
+// TASK STATISTICS
+// =========================
 
 const totalTask =
-  document.getElementById("totalTasks");
+    document.getElementById(
+        "totalTasks"
+    );
 
 const pendingTask =
-  document.getElementById("pendingTasks");
+    document.getElementById(
+        "pendingTasks"
+    );
 
 const completedTask =
-  document.getElementById("completedTasks");
-
-// UPDATE STATISTICS
+    document.getElementById(
+        "completedTasks"
+    );
 
 
 function updateStats() {
 
-
-  const total =
-    userTaskInfo.length;
-
-
-  const completed =
-    userTaskInfo.filter(
-      (task) => task.completed === true
-    ).length;
+    const total =
+        userTaskInfo.length;
 
 
-  const pending =
-    userTaskInfo.filter(
-      (task) => task.completed === false
-    ).length;
+    const completed =
+        userTaskInfo.filter(
+            (task) =>
+                task.completed === true
+        ).length;
 
 
-  if (totalTask) {
-
-    totalTask.textContent =
-      total;
-
-  }
-
-
-  if (completedTask) {
-
-    completedTask.textContent =
-      completed;
-
-  }
+    const pending =
+        userTaskInfo.filter(
+            (task) =>
+                task.completed === false
+        ).length;
 
 
-  if (pendingTask) {
+    if (totalTask) {
 
-    pendingTask.textContent =
-      pending;
+        totalTask.textContent =
+            total;
 
-  }
+    }
+
+
+    if (completedTask) {
+
+        completedTask.textContent =
+            completed;
+
+    }
+
+
+    if (pendingTask) {
+
+        pendingTask.textContent =
+            pending;
+
+    }
 
 }
 
@@ -140,339 +161,399 @@ function updateStats() {
 updateStats();
 
 
-
+// =========================
 // ADD TASK MODAL
+// =========================
+
 const addTaskBtn =
-  document.getElementById("addTaskBtn");
+    document.getElementById(
+        "addTaskBtn"
+    );
+
 
 const taskModal =
-  document.getElementById("taskModal");
+    document.getElementById(
+        "taskModal"
+    );
+
 
 const closeModal =
-  document.querySelector(".closeModal");
+    document.querySelector(
+        ".closeModal"
+    );
+
 
 const cancelBtn =
-  document.querySelector(".cancelBtn");
+    document.querySelector(
+        ".cancelBtn"
+    );
+
 
 const taskForm =
-  document.getElementById("taskForm");
+    document.getElementById(
+        "taskForm"
+    );
 
 
+// OPEN MODAL
 
-if (addTaskBtn && taskModal) {
+if (
+    addTaskBtn &&
+    taskModal
+) {
 
-  addTaskBtn.addEventListener(
-    "click",
-    () => {
+    addTaskBtn.addEventListener(
+        "click",
+        () => {
 
-      taskModal.classList.add(
-        "active"
-      );
+            taskModal.classList.add(
+                "active"
+            );
 
-    }
-  );
-
-}
-
-
-
-if (closeModal && taskModal) {
-
-  closeModal.addEventListener(
-    "click",
-    () => {
-
-      taskModal.classList.remove(
-        "active"
-      );
-
-    }
-  );
+        }
+    );
 
 }
 
 
+// CLOSE MODAL
 
-if (cancelBtn && taskModal) {
+if (
+    closeModal &&
+    taskModal
+) {
 
-  cancelBtn.addEventListener(
-    "click",
-    () => {
+    closeModal.addEventListener(
+        "click",
+        () => {
 
-      taskModal.classList.remove(
-        "active"
-      );
+            taskModal.classList.remove(
+                "active"
+            );
 
-    }
-  );
+        }
+    );
 
 }
 
+
+// CANCEL BUTTON
+
+if (
+    cancelBtn &&
+    taskModal
+) {
+
+    cancelBtn.addEventListener(
+        "click",
+        () => {
+
+            taskModal.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+}
+
+
+// =========================
 // SAVE NEW TASK
-
+// =========================
 
 if (taskForm) {
 
-  taskForm.addEventListener(
-    "submit",
-    (event) => {
+    taskForm.addEventListener(
+        "submit",
+        (event) => {
 
-      event.preventDefault();
-
-
-      const title =
-        document.getElementById(
-          "tTitle"
-        ).value;
+            event.preventDefault();
 
 
-      const description =
-        document.getElementById(
-          "describe"
-        ).value;
+            const title =
+                document.getElementById(
+                    "tTitle"
+                ).value;
 
 
-      const dueDate =
-        document.getElementById(
-          "date"
-        ).value;
+            const description =
+                document.getElementById(
+                    "describe"
+                ).value;
 
 
-      const priority =
-        document.getElementById(
-          "priority"
-        ).value;
+            const dueDate =
+                document.getElementById(
+                    "date"
+                ).value;
 
 
-      const newTask = {
-
-        taskTitle: title,
-
-        taskDescription:
-          description,
-
-        taskDate: dueDate,
-
-        taskPriority:
-          priority,
-
-        completed: false
-
-      };
+            const priority =
+                document.getElementById(
+                    "priority"
+                ).value;
 
 
-      userTaskInfo.push(
-        newTask
-      );
+            const newTask = {
+
+                taskTitle:
+                    title,
+
+                taskDescription:
+                    description,
+
+                taskDate:
+                    dueDate,
+
+                taskPriority:
+                    priority,
+
+                completed:
+                    false
+
+            };
 
 
-      localStorage.setItem(
-        "taskInfo",
-        JSON.stringify(
-          userTaskInfo
-        )
-      );
+            userTaskInfo.push(
+                newTask
+            );
 
 
-      taskForm.reset();
+            localStorage.setItem(
+                "taskInfo",
+                JSON.stringify(
+                    userTaskInfo
+                )
+            );
 
 
-      if (taskModal) {
-
-        taskModal.classList.remove(
-          "active"
-        );
-
-      }
+            taskForm.reset();
 
 
-      updateStats();
+            if (taskModal) {
+
+                taskModal.classList.remove(
+                    "active"
+                );
+
+            }
 
 
-      // Refresh My Tasks page
-      displayMyTasks(
-        currentFilter
-      );
+            updateStats();
 
 
-      // Refresh Dashboard
-      displayDashboardTasks();
+            displayMyTasks(
+                currentFilter
+            );
 
-    }
-  );
+
+            displayDashboardTasks();
+
+
+            renderCalendar();
+
+        }
+    );
 
 }
 
 
-// DASHBOARD TASKS
-
-const list =
-  document.querySelector(".list");
-
-
+// =========================
+// DASHBOARD TASK DISPLAY
+// =========================
 
 function displayDashboardTasks() {
 
-
-  if (!list) {
-
-    return;
-
-  }
-
-
-  list.innerHTML = "";
-
-
-  userTaskInfo.forEach(
-    (task) => {
-
-
-      const listItems =
-        document.createElement(
-          "div"
+    const taskList =
+        document.querySelector(
+            ".list"
         );
 
 
-      const checkBox =
-        document.createElement(
-          "input"
-        );
+    if (!taskList) {
 
-
-      const taskDescription =
-        document.createElement(
-          "p"
-        );
-
-
-      const taskTitle =
-        document.createElement(
-          "h4"
-        );
-
-
-      const namedDate =
-        document.createElement(
-          "p"
-        );
-
-
-      const taskPrio =
-        document.createElement(
-          "h5"
-        );
-
-
-      listItems.classList.add(
-        "taskItem"
-      );
-
-
-      checkBox.type =
-        "checkbox";
-
-
-      checkBox.checked =
-        task.completed;
-
-
-      taskTitle.textContent =
-        task.taskTitle;
-
-
-      taskDescription.textContent =
-        task.taskDescription;
-
-
-      namedDate.textContent =
-        task.taskDate;
-
-
-      taskPrio.textContent =
-        task.taskPriority;
-
-
-      taskPrio.classList.add(
-        task.taskPriority
-      );
-
-
-      listItems.append(
-
-        checkBox,
-
-        taskTitle,
-
-        taskDescription,
-
-        namedDate,
-
-        taskPrio
-
-      );
-
-
-      if (task.completed) {
-
-        listItems.classList.add(
-          "completed"
-        );
-
-      }
-
-
-      checkBox.addEventListener(
-        "change",
-        () => {
-
-
-          task.completed =
-            checkBox.checked;
-
-
-          localStorage.setItem(
-            "taskInfo",
-            JSON.stringify(
-              userTaskInfo
-            )
-          );
-
-
-          updateStats();
-
-
-          if (
-            checkBox.checked
-          ) {
-
-            listItems.classList.add(
-              "completed"
-            );
-
-          } else {
-
-            listItems.classList.remove(
-              "completed"
-            );
-
-          }
-
-
-          displayMyTasks(
-            currentFilter
-          );
-
-        }
-      );
-
-
-      list.append(
-        listItems
-      );
+        return;
 
     }
-  );
+
+
+    taskList.innerHTML = "";
+
+
+    if (
+        userTaskInfo.length === 0
+    ) {
+
+        taskList.innerHTML =
+            `<p>No tasks yet.</p>`;
+
+        return;
+
+    }
+
+
+    userTaskInfo.forEach(
+        (task, index) => {
+
+            const taskItem =
+                document.createElement(
+                    "div"
+                );
+
+
+            taskItem.classList.add(
+                "taskItem"
+            );
+
+
+            if (task.completed) {
+
+                taskItem.classList.add(
+                    "completed"
+                );
+
+            }
+
+
+            // Checkbox
+
+            const checkbox =
+                document.createElement(
+                    "input"
+                );
+
+
+            checkbox.type =
+                "checkbox";
+
+
+            checkbox.checked =
+                task.completed;
+
+
+            checkbox.addEventListener(
+                "change",
+                () => {
+
+                    userTaskInfo[index]
+                        .completed =
+                        checkbox.checked;
+
+
+                    localStorage.setItem(
+                        "taskInfo",
+                        JSON.stringify(
+                            userTaskInfo
+                        )
+                    );
+
+
+                    updateStats();
+
+                    displayDashboardTasks();
+
+                    displayMyTasks(
+                        currentFilter
+                    );
+
+                    renderCalendar();
+
+                }
+            );
+
+
+            // Task information
+
+            const taskInfo =
+                document.createElement(
+                    "div"
+                );
+
+
+            const title =
+                document.createElement(
+                    "h4"
+                );
+
+
+            title.textContent =
+                task.taskTitle;
+
+
+            const description =
+                document.createElement(
+                    "p"
+                );
+
+
+            description.textContent =
+                task.taskDescription;
+
+
+            const date =
+                document.createElement(
+                    "p"
+                );
+
+
+            date.textContent =
+                task.taskDate;
+
+
+            taskInfo.appendChild(
+                title
+            );
+
+
+            taskInfo.appendChild(
+                description
+            );
+
+
+            taskInfo.appendChild(
+                date
+            );
+
+
+            // Priority
+
+            const priority =
+                document.createElement(
+                    "h5"
+                );
+
+
+            priority.textContent =
+                task.taskPriority;
+
+
+            priority.classList.add(
+                task.taskPriority
+            );
+
+
+            taskItem.appendChild(
+                checkbox
+            );
+
+
+            taskItem.appendChild(
+                taskInfo
+            );
+
+
+            taskItem.appendChild(
+                priority
+            );
+
+
+            taskList.appendChild(
+                taskItem
+            );
+
+        }
+    );
 
 }
 
@@ -480,698 +561,1043 @@ function displayDashboardTasks() {
 displayDashboardTasks();
 
 
-// MY TASKS
+// =========================
+// MY TASKS PAGE
+// =========================
 
 const taskList =
-  document.querySelector(
-    ".taskList"
-  );
+    document.querySelector(
+        ".taskList"
+    );
 
 
 const filterBtns =
-  document.querySelectorAll(
-    ".filterBtn"
-  );
+    document.querySelectorAll(
+        ".filterBtn"
+    );
 
 
 const taskCount =
-  document.querySelector(
-    "#tasksBg .taskCount h3"
-  );
+    document.querySelector(
+        "#tasksBg .taskCount h3"
+    );
 
 
 let currentFilter =
-  "all";
+    "all";
 
 
+// =========================
 // DISPLAY MY TASKS
-
+// =========================
 
 function displayMyTasks(
-  filter = "all"
+    filter = "all"
 ) {
 
+    if (!taskList) {
 
-  if (!taskList) {
-
-    return;
-
-  }
-
-
-  taskList.innerHTML =
-    "";
-
-
-  let filteredTasks =
-    userTaskInfo;
-
-
-  // PENDING
-
-
-  if (
-    filter === "pending"
-  ) {
-
-    filteredTasks =
-      userTaskInfo.filter(
-        (task) =>
-          task.completed === false
-      );
-
-  }
-
-  // COMPLETED
-  
-
-  if (
-    filter === "completed"
-  ) {
-
-    filteredTasks =
-      userTaskInfo.filter(
-        (task) =>
-          task.completed === true
-      );
-
-  }
-
-
-  // UPDATE COUNT
-  
-
-  if (taskCount) {
-
-
-    if (
-      filter === "all"
-    ) {
-
-      taskCount.textContent =
-        `All Tasks · ${filteredTasks.length}`;
+        return;
 
     }
 
 
+    taskList.innerHTML = "";
+
+
+    let filteredTasks =
+        userTaskInfo;
+
+
+    // Pending
+
     if (
-      filter === "pending"
+        filter === "pending"
     ) {
 
-      taskCount.textContent =
-        `Pending Tasks · ${filteredTasks.length}`;
+        filteredTasks =
+            userTaskInfo.filter(
+                (task) =>
+                    task.completed === false
+            );
 
     }
 
 
+    // Completed
+
     if (
-      filter === "completed"
+        filter === "completed"
     ) {
 
-      taskCount.textContent =
-        `Completed Tasks · ${filteredTasks.length}`;
+        filteredTasks =
+            userTaskInfo.filter(
+                (task) =>
+                    task.completed === true
+            );
 
     }
 
-  }
 
+    // =========================
+    // TASK COUNT
+    // =========================
 
-  // NO TASKS MESSAGE
- 
+    if (taskCount) {
 
-  if (
-    filteredTasks.length === 0
-  ) {
+        if (
+            filter === "all"
+        ) {
 
-
-    const emptyMessage =
-      document.createElement(
-        "p"
-      );
-
-
-    emptyMessage.textContent =
-      "No tasks found.";
-
-
-    emptyMessage.style.textAlign =
-      "center";
-
-
-    emptyMessage.style.padding =
-      "30px";
-
-
-    emptyMessage.style.color =
-      "#777";
-
-
-    taskList.append(
-      emptyMessage
-    );
-
-
-    return;
-
-  }
-
-  // CREATE TASK CARDS
-  
-
-  filteredTasks.forEach(
-    (task) => {
-
-
-      const taskCard =
-        document.createElement(
-          "div"
-        );
-
-
-      taskCard.classList.add(
-        "taskCard"
-      );
-
-
-
-      // TASK MAIN
-
-      const taskMain =
-        document.createElement(
-          "div"
-        );
-
-
-      taskMain.classList.add(
-        "taskMain"
-      );
-
-
-
-      // CHECKBOX
-
-      const checkBox =
-        document.createElement(
-          "input"
-        );
-
-
-      checkBox.type =
-        "checkbox";
-
-
-      checkBox.classList.add(
-        "taskCheck"
-      );
-
-
-      checkBox.checked =
-        task.completed;
-
-
-
-      // TASK INFO
-
-      const taskInfo =
-        document.createElement(
-          "div"
-        );
-
-
-      taskInfo.classList.add(
-        "taskInfo"
-      );
-
-
-
-      // TITLE
-
-      const taskTitle =
-        document.createElement(
-          "h4"
-        );
-
-
-      taskTitle.textContent =
-        task.taskTitle;
-
-
-
-      // DESCRIPTION
-
-      const taskDescription =
-        document.createElement(
-          "p"
-        );
-
-
-      taskDescription.textContent =
-        task.taskDescription;
-
-
-
-      // DATE
-
-      const taskDate =
-        document.createElement(
-          "span"
-        );
-
-
-      taskDate.textContent =
-        `Due: ${task.taskDate}`;
-
-
-
-      taskInfo.append(
-
-        taskTitle,
-
-        taskDescription,
-
-        taskDate
-
-      );
-
-
-
-      taskMain.append(
-
-        checkBox,
-
-        taskInfo
-
-      );
-
-
-
-      // PRIORITY
-
-      const taskPriority =
-        document.createElement(
-          "div"
-        );
-
-
-      taskPriority.classList.add(
-        "taskPriority"
-      );
-
-
-
-      const priorityBadge =
-        document.createElement(
-          "span"
-        );
-
-
-      priorityBadge.textContent =
-        task.taskPriority
-          .toUpperCase();
-
-
-      priorityBadge.classList.add(
-        task.taskPriority
-      );
-
-
-
-      taskPriority.append(
-        priorityBadge
-      );
-
-
-
-      // ADD TO CARD
-
-      taskCard.append(
-
-        taskMain,
-
-        taskPriority
-
-      );
-
-
-      // COMPLETED STYLE
-
-      if (
-        task.completed
-      ) {
-
-        taskCard.classList.add(
-          "completed"
-        );
-
-      }
-
-
-      // CHECKBOX EVENT
-
-      checkBox.addEventListener(
-        "change",
-        () => {
-
-
-          task.completed =
-            checkBox.checked;
-
-
-          localStorage.setItem(
-            "taskInfo",
-            JSON.stringify(
-              userTaskInfo
-            )
-          );
-
-
-          updateStats();
-
-
-          displayMyTasks(
-            currentFilter
-          );
+            taskCount.textContent =
+                `All Tasks · ${filteredTasks.length}`;
 
         }
-      );
 
 
+        else if (
+            filter === "pending"
+        ) {
 
-      taskList.append(
-        taskCard
-      );
+            taskCount.textContent =
+                `Pending Tasks · ${filteredTasks.length}`;
+
+        }
+
+
+        else if (
+            filter === "completed"
+        ) {
+
+            taskCount.textContent =
+                `Completed Tasks · ${filteredTasks.length}`;
+
+        }
 
     }
-  );
-
-}
 
 
-// FILTER BUTTONS
+    // =========================
+    // NO TASKS
+    // =========================
 
-if (taskList) {
+    if (
+        filteredTasks.length === 0
+    ) {
+
+        taskList.innerHTML =
+            `<p>No tasks found.</p>`;
+
+        return;
+
+    }
 
 
-  filterBtns.forEach(
-    (button) => {
+    // =========================
+    // CREATE TASK CARDS
+    // =========================
+
+    filteredTasks.forEach(
+        (task) => {
+
+            // Main card
+
+            const taskCard =
+                document.createElement(
+                    "div"
+                );
 
 
-      button.addEventListener(
-        "click",
-        () => {
+            taskCard.classList.add(
+                "taskCard"
+            );
 
 
-          filterBtns.forEach(
-            (btn) => {
+            if (task.completed) {
 
-              btn.classList.remove(
-                "active"
-              );
+                taskCard.classList.add(
+                    "completed"
+                );
 
             }
-          );
 
 
-          button.classList.add(
-            "active"
-          );
+            // =========================
+            // TASK MAIN
+            // =========================
+
+            const taskMain =
+                document.createElement(
+                    "div"
+                );
 
 
-          currentFilter =
-            button.textContent
-              .trim()
-              .toLowerCase();
+            taskMain.classList.add(
+                "taskMain"
+            );
 
 
-          displayMyTasks(
-            currentFilter
-          );
+            // =========================
+            // CHECKBOX
+            // =========================
+
+            const checkbox =
+                document.createElement(
+                    "input"
+                );
+
+
+            checkbox.type =
+                "checkbox";
+
+
+            checkbox.classList.add(
+                "taskCheck"
+            );
+
+
+            checkbox.checked =
+                task.completed;
+
+
+            // =========================
+            // TASK INFORMATION
+            // =========================
+
+            const taskInfo =
+                document.createElement(
+                    "div"
+                );
+
+
+            taskInfo.classList.add(
+                "taskInfo"
+            );
+
+
+            const title =
+                document.createElement(
+                    "h4"
+                );
+
+
+            title.textContent =
+                task.taskTitle;
+
+
+            const description =
+                document.createElement(
+                    "p"
+                );
+
+
+            description.textContent =
+                task.taskDescription;
+
+
+            const date =
+                document.createElement(
+                    "span"
+                );
+
+
+            date.textContent =
+                `Due: ${task.taskDate}`;
+
+
+            taskInfo.appendChild(
+                title
+            );
+
+
+            taskInfo.appendChild(
+                description
+            );
+
+
+            taskInfo.appendChild(
+                date
+            );
+
+
+            // =========================
+            // TASK MAIN CONTENT
+            // =========================
+
+            taskMain.appendChild(
+                checkbox
+            );
+
+
+            taskMain.appendChild(
+                taskInfo
+            );
+
+
+            // =========================
+            // PRIORITY
+            // =========================
+
+            const taskPriority =
+                document.createElement(
+                    "div"
+                );
+
+
+            taskPriority.classList.add(
+                "taskPriority"
+            );
+
+
+            const priority =
+                document.createElement(
+                    "span"
+                );
+
+
+            priority.textContent =
+                task.taskPriority;
+
+
+            priority.classList.add(
+                task.taskPriority
+            );
+
+
+            taskPriority.appendChild(
+                priority
+            );
+
+
+            // =========================
+            // COMPLETE TASK CARD
+            // =========================
+
+            taskCard.appendChild(
+                taskMain
+            );
+
+
+            taskCard.appendChild(
+                taskPriority
+            );
+
+
+            taskList.appendChild(
+                taskCard
+            );
+
+
+            // =========================
+            // CHECKBOX EVENT
+            // =========================
+
+            checkbox.addEventListener(
+                "change",
+                () => {
+
+                    const taskIndex =
+                        userTaskInfo.indexOf(
+                            task
+                        );
+
+
+                    userTaskInfo[
+                        taskIndex
+                    ].completed =
+                        checkbox.checked;
+
+
+                    localStorage.setItem(
+                        "taskInfo",
+                        JSON.stringify(
+                            userTaskInfo
+                        )
+                    );
+
+
+                    updateStats();
+
+
+                    displayMyTasks(
+                        currentFilter
+                    );
+
+
+                    displayDashboardTasks();
+
+
+                    renderCalendar();
+
+                }
+            );
 
         }
-      );
-
-    }
-  );
-
-  // SHOW ALL TASKS FIRST
-
-  displayMyTasks(
-    "all"
-  );
+    );
 
 }
 
 
+// =========================
+// FILTER BUTTONS
+// =========================
 
-// ==============================
+if (
+    filterBtns.length > 0
+) {
+
+    filterBtns.forEach(
+        (button) => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    filterBtns.forEach(
+                        (btn) => {
+
+                            btn.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+
+                    currentFilter =
+                        button.dataset.filter;
+
+
+                    displayMyTasks(
+                        currentFilter
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+// Initial My Tasks display
+
+displayMyTasks(
+    currentFilter
+);
+
+
+// =========================
 // CALENDAR
-// ==============================
+// =========================
 
 const monthYear =
-  document.getElementById(
-    "monthYear"
-  );
+    document.getElementById(
+        "monthYear"
+    );
 
 
 const calendarDates =
-  document.getElementById(
-    "calendarDates"
-  );
+    document.getElementById(
+        "calendarDates"
+    );
 
 
 const prevMonth =
-  document.getElementById(
-    "prevMonth"
-  );
+    document.getElementById(
+        "prevMonth"
+    );
 
 
 const nextMonth =
-  document.getElementById(
-    "nextMonth"
-  );
+    document.getElementById(
+        "nextMonth"
+    );
+
+
+const calendarTaskLists =
+    document.querySelectorAll(
+        ".calendarTaskList"
+    );
 
 
 let currentDate =
-  new Date();
+    new Date();
 
 
+// =========================
+// GOOGLE CALENDAR
+// =========================
 
-function renderCalendar() {
+function addToGoogleCalendar(
+    task
+) {
 
+    if (!task.taskDate) {
 
-  if (
-    !calendarDates ||
-    !monthYear
-  ) {
+        return;
 
-    return;
-
-  }
-
-
-  const year =
-    currentDate.getFullYear();
+    }
 
 
-  const month =
-    currentDate.getMonth();
+    // Google Calendar uses
+    // YYYYMMDD for all-day events
+
+    const startDate =
+        task.taskDate.replace(
+            /-/g,
+            ""
+        );
 
 
-  const firstDay =
-    new Date(
-      year,
-      month,
-      1
-    ).getDay();
+    // End date must be
+    // the following day
+
+    const date =
+        new Date(
+            task.taskDate +
+            "T00:00:00"
+        );
 
 
-  const lastDate =
-    new Date(
-      year,
-      month + 1,
-      0
-    ).getDate();
-
-
-  const monthName =
-    currentDate.toLocaleString(
-      "default",
-      {
-        month: "long"
-      }
+    date.setDate(
+        date.getDate() + 1
     );
 
 
-  monthYear.textContent =
-    `${monthName} ${year}`;
+    const endDate =
+        `${date.getFullYear()}${String(
+            date.getMonth() + 1
+        ).padStart(2, "0")}${String(
+            date.getDate()
+        ).padStart(2, "0")}`;
 
 
-  calendarDates.innerHTML =
-    "";
+    const title =
+        encodeURIComponent(
+            task.taskTitle
+        );
 
 
-
-  // EMPTY DAYS BEFORE FIRST DATE
-
-  for (
-    let i = 0;
-    i < firstDay;
-    i++
-  ) {
+    const details =
+        encodeURIComponent(
+            `${task.taskDescription}\n\nPriority: ${task.taskPriority}`
+        );
 
 
-    const emptyDate =
-      document.createElement(
-        "span"
-      );
+    const googleCalendarUrl =
+        `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}`;
 
 
-    calendarDates.append(
-      emptyDate
+    window.open(
+        googleCalendarUrl,
+        "_blank"
     );
 
-  }
+}
 
 
+// =========================
+// DISPLAY CALENDAR TASKS
+// =========================
 
-  // CREATE DATES
+function displayCalendarTasks(
+    selectedDate
+) {
 
-  for (
-    let date = 1;
-    date <= lastDate;
-    date++
-  ) {
+    if (
+        calendarTaskLists.length === 0
+    ) {
 
+        return;
 
-    const dateElement =
-      document.createElement(
-        "span"
-      );
-
-
-    dateElement.textContent =
-      date;
+    }
 
 
-    const today =
-      new Date();
+    calendarTaskLists.forEach(
+        (list) => {
+
+            list.innerHTML = "";
+
+        }
+    );
+
+
+    const selectedTasks =
+        userTaskInfo.filter(
+            (task) =>
+                task.taskDate ===
+                selectedDate
+        );
 
 
     if (
-
-      date ===
-      today.getDate()
-
-      &&
-
-      month ===
-      today.getMonth()
-
-      &&
-
-      year ===
-      today.getFullYear()
-
+        selectedTasks.length === 0
     ) {
 
-      dateElement.classList.add(
-        "today"
-      );
+        calendarTaskLists.forEach(
+            (list) => {
+
+                list.innerHTML =
+                    `<p>No tasks for this date.</p>`;
+
+            }
+        );
+
+        return;
 
     }
 
 
-    calendarDates.append(
-      dateElement
+    const todayList =
+        document.querySelector(
+            ".todayTasks .calendarTaskList"
+        );
+
+
+    const upcomingList =
+        document.querySelector(
+            ".upcomingTasks .calendarTaskList"
+        );
+
+
+    selectedTasks.forEach(
+        (task) => {
+
+            // =========================
+            // CALENDAR TASK
+            // =========================
+
+            const calendarTask =
+                document.createElement(
+                    "div"
+                );
+
+
+            calendarTask.classList.add(
+                "calendarTask"
+            );
+
+
+            // =========================
+            // TASK INFO
+            // =========================
+
+            const taskInfo =
+                document.createElement(
+                    "div"
+                );
+
+
+            const title =
+                document.createElement(
+                    "h4"
+                );
+
+
+            title.textContent =
+                task.taskTitle;
+
+
+            const description =
+                document.createElement(
+                    "p"
+                );
+
+
+            description.textContent =
+                task.taskDescription;
+
+
+            taskInfo.appendChild(
+                title
+            );
+
+
+            taskInfo.appendChild(
+                description
+            );
+
+
+            // =========================
+            // PRIORITY
+            // =========================
+
+            const priority =
+                document.createElement(
+                    "span"
+                );
+
+
+            priority.textContent =
+                task.taskPriority;
+
+
+            priority.classList.add(
+                task.taskPriority
+            );
+
+
+            // =========================
+            // GOOGLE CALENDAR BUTTON
+            // =========================
+
+            const googleButton =
+                document.createElement(
+                    "button"
+                );
+
+
+            googleButton.type =
+                "button";
+
+
+            googleButton.classList.add(
+                "googleCalendarBtn"
+            );
+
+
+            googleButton.innerHTML =
+                `<i class="fa-solid fa-calendar-plus"></i> Add to Google Calendar`;
+
+
+            googleButton.addEventListener(
+                "click",
+                () => {
+
+                    addToGoogleCalendar(
+                        task
+                    );
+
+                }
+            );
+
+
+            // =========================
+            // ADD CONTENT
+            // =========================
+
+            calendarTask.appendChild(
+                taskInfo
+            );
+
+
+            calendarTask.appendChild(
+                priority
+            );
+
+
+            calendarTask.appendChild(
+                googleButton
+            );
+
+
+            // =========================
+            // TODAY / UPCOMING
+            // =========================
+
+            const today =
+                new Date();
+
+
+            const todayString =
+                `${today.getFullYear()}-${String(
+                    today.getMonth() + 1
+                ).padStart(2, "0")}-${String(
+                    today.getDate()
+                ).padStart(2, "0")}`;
+
+
+            if (
+                selectedDate ===
+                todayString
+            ) {
+
+                if (todayList) {
+
+                    todayList.appendChild(
+                        calendarTask
+                    );
+
+                }
+
+            }
+
+
+            else {
+
+                if (upcomingList) {
+
+                    upcomingList.appendChild(
+                        calendarTask
+                    );
+
+                }
+
+            }
+
+        }
     );
-
-  }
-
-
-
-  // EMPTY DAYS AFTER LAST DATE
-
-  const lastDay =
-    new Date(
-      year,
-      month,
-      lastDate
-    ).getDay();
-
-
-  const remainingDays =
-    6 - lastDay;
-
-
-  for (
-    let i = 0;
-    i < remainingDays;
-    i++
-  ) {
-
-
-    const emptyDate =
-      document.createElement(
-        "span"
-      );
-
-
-    calendarDates.append(
-      emptyDate
-    );
-
-  }
 
 }
 
 
+// =========================
+// RENDER CALENDAR
+// =========================
+
+function renderCalendar() {
+
+    if (
+        !calendarDates ||
+        !monthYear
+    ) {
+
+        return;
+
+    }
+
+
+    calendarDates.innerHTML =
+        "";
+
+
+    const year =
+        currentDate.getFullYear();
+
+
+    const month =
+        currentDate.getMonth();
+
+
+    const firstDay =
+        new Date(
+            year,
+            month,
+            1
+        ).getDay();
+
+
+    const lastDate =
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
+
+
+    const monthName =
+        currentDate.toLocaleString(
+            "default",
+            {
+                month: "long"
+            }
+        );
+
+
+    monthYear.textContent =
+        `${monthName} ${year}`;
+
+
+    // =========================
+    // EMPTY DAYS
+    // =========================
+
+    for (
+        let i = 0;
+        i < firstDay;
+        i++
+    ) {
+
+        const emptyDate =
+            document.createElement(
+                "span"
+            );
+
+
+        calendarDates.appendChild(
+            emptyDate
+        );
+
+    }
+
+
+    // =========================
+    // CALENDAR DAYS
+    // =========================
+
+    for (
+        let day = 1;
+        day <= lastDate;
+        day++
+    ) {
+
+        const dateElement =
+            document.createElement(
+                "span"
+            );
+
+
+        dateElement.textContent =
+            day;
+
+
+        const calendarDate =
+            `${year}-${String(
+                month + 1
+            ).padStart(2, "0")}-${String(
+                day
+            ).padStart(2, "0")}`;
+
+
+        // =========================
+        // TASK INDICATOR
+        // =========================
+
+        const hasTask =
+            userTaskInfo.some(
+                (task) =>
+                    task.taskDate ===
+                    calendarDate
+            );
+
+
+        if (hasTask) {
+
+            dateElement.classList.add(
+                "hasTask"
+            );
+
+        }
+
+
+        // =========================
+        // TODAY
+        // =========================
+
+        const today =
+            new Date();
+
+
+        const todayString =
+            `${today.getFullYear()}-${String(
+                today.getMonth() + 1
+            ).padStart(2, "0")}-${String(
+                today.getDate()
+            ).padStart(2, "0")}`;
+
+
+        if (
+            calendarDate ===
+            todayString
+        ) {
+
+            dateElement.classList.add(
+                "today"
+            );
+
+        }
+
+
+        // =========================
+        // SELECT DATE
+        // =========================
+
+        dateElement.addEventListener(
+            "click",
+            () => {
+
+                document
+                    .querySelectorAll(
+                        ".calendarDates span"
+                    )
+                    .forEach(
+                        (date) => {
+
+                            date.classList.remove(
+                                "selected"
+                            );
+
+                        }
+                    );
+
+
+                dateElement.classList.add(
+                    "selected"
+                );
+
+
+                displayCalendarTasks(
+                    calendarDate
+                );
+
+            }
+        );
+
+
+        calendarDates.appendChild(
+            dateElement
+        );
+
+    }
+
+}
+
+
+// =========================
 // PREVIOUS MONTH
+// =========================
 
 if (prevMonth) {
 
-  prevMonth.addEventListener(
-    "click",
-    () => {
+    prevMonth.addEventListener(
+        "click",
+        () => {
+
+            currentDate.setMonth(
+                currentDate.getMonth() - 1
+            );
 
 
-      currentDate.setMonth(
-        currentDate.getMonth() - 1
-      );
+            renderCalendar();
 
-
-      renderCalendar();
-
-    }
-  );
+        }
+    );
 
 }
 
+
+// =========================
 // NEXT MONTH
+// =========================
 
 if (nextMonth) {
 
-  nextMonth.addEventListener(
-    "click",
-    () => {
+    nextMonth.addEventListener(
+        "click",
+        () => {
+
+            currentDate.setMonth(
+                currentDate.getMonth() + 1
+            );
 
 
-      currentDate.setMonth(
-        currentDate.getMonth() + 1
-      );
+            renderCalendar();
 
-
-      renderCalendar();
-
-    }
-  );
-
-}
-
-
-// INITIALIZE CALENDAR
-
-if (calendarDates) {
-
-  renderCalendar();
+        }
+    );
 
 }
+
+
+// =========================
+// INITIAL CALENDAR
+// =========================
+
+renderCalendar();
