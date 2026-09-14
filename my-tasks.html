@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>My Tasks | To-do</title>
 
     <link rel="stylesheet" href="to-do.css">
@@ -38,8 +38,10 @@
                 </li>
 
                 <li>
-                    <i class="fa-solid fa-calendar-days"></i>
-                    Calendar
+                    <a href="calendar.html">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        Calendar
+                    </a>
                 </li>
 
                 <li>
@@ -120,15 +122,15 @@
                 <!-- Filters -->
                 <div class="taskFilters">
 
-                    <button class="filterBtn active">
+                    <button class="filterBtn active" data-filter="all">
                         All
                     </button>
 
-                    <button class="filterBtn">
+                    <button class="filterBtn" data-filter="pending">
                         Pending
                     </button>
 
-                    <button class="filterBtn">
+                    <button class="filterBtn" data-filter="completed">
                         Completed
                     </button>
 
