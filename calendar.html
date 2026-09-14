@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="to-do.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <title>To-do | Calendar</title>
+</head>
+
+<body id="calendarBg">
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside>
+
+            <h4>Smart To-Do</h4>
+
+            <ul>
+
+                <li>
+                    <a href="dashboard.html">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="my-tasks.html">
+                        <i class="fa-solid fa-list-check"></i>
+                        My Tasks
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="calendar.html">
+                        <i class="fa-solid fa-calendar-days"></i>
+                        Calendar
+                    </a>
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </li>
+
+            </ul>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main>
+
+            <!-- Header -->
+            <header>
+
+                <p>
+                    Welcome back,
+                    <span id="userName"></span>
+                </p>
+
+                <div class="headerActions">
+
+                    <div class="searchBox">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            placeholder="Search tasks..."
+                        >
+
+                    </div>
+
+                    <i class="fa-solid fa-moon"></i>
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+            </header>
+
+
+            <!-- Calendar Page -->
+            <section class="calendarPage">
+
+                <!-- Calendar Heading -->
+                <div class="calendarHeading">
+
+                    <div>
+                        <h2>Calendar</h2>
+
+                        <p>
+                            View and manage your tasks by date.
+                        </p>
+                    </div>
+
+                    <button id="addTaskBtn">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Task
+                    </button>
+
+                </div>
+
+
+                <!-- Calendar Card -->
+                <div class="calendarCard">
+
+                    <!-- Calendar Header -->
+                    <div class="calendarHeader">
+
+                        <button id="prevMonth">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <h3 id="monthYear"></h3>
+
+                        <button id="nextMonth">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                    </div>
+
+
+                    <!-- Days of the Week -->
+                    <div class="calendarDays">
+
+                        <span>Sun</span>
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+
+                    </div>
+
+
+                    <!-- Calendar Dates -->
+                    <div
+                        class="calendarDates"
+                        id="calendarDates">
+                    </div>
+
+                </div>
+
+
+                <!-- Tasks Below Calendar -->
+                <div class="calendarTasks">
+
+                    <div class="todayTasks">
+
+                        <div class="sectionHeader">
+                            <h3>Today's Tasks</h3>
+                        </div>
+
+                        <div class="calendarTaskList">
+
+                            <!-- Tasks will be added here with JavaScript -->
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="upcomingTasks">
+
+                        <div class="sectionHeader">
+                            <h3>Upcoming Tasks</h3>
+                        </div>
+
+                        <div class="calendarTaskList">
+
+                            <!-- Upcoming tasks will be added here -->
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Add Task Modal -->
+    <div class="modal" id="taskModal">
+
+        <div class="modalContent">
+
+            <div class="modalHeader">
+
+                <h3>Add New Task</h3>
+
+                <button class="closeModal">
+                    &times;
+                </button>
+
+            </div>
+
+            <form id="taskForm">
+
+                <p>
+                    <label for="tTitle">Task Title</label>
+
+                    <input
+                        type="text"
+                        id="tTitle"
+                        required
+                    >
+                </p>
+
+
+                <p>
+                    <label for="describe">Description</label>
+
+                    <textarea
+                        id="describe"
+                        rows="4"
+                        required
+                    ></textarea>
+                </p>
+
+
+                <p>
+                    <label for="date">Due Date</label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        required
+                    >
+                </p>
+
+
+                <p>
+                    <label for="priority">Priority</label>
+
+                    <select id="priority" required>
+
+                        <option value="">
+                            Select priority
+                        </option>
+
+                        <option value="high">
+                            High
+                        </option>
+
+                        <option value="medium">
+                            Medium
+                        </option>
+
+                        <option value="low">
+                            Low
+                        </option>
+
+                    </select>
+                </p>
+
+
+                <div class="formActions">
+
+                    <button
+                        type="button"
+                        class="cancelBtn">
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="saveBtn">
+                        Save Task
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="functionality.js"></script>
+
+</body>
+
+</html>
