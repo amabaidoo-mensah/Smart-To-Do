@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="to-do.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <title>Settings | To-do</title>
 </head>
 
-<body>
+<body id="settingsBg">
 
     <div class="container">
 
@@ -23,9 +24,10 @@
             <ul>
 
                 <li>
-
-                    <i class="fa-solid fa-house"></i>
-                    Dashboard
+                    <a href="dashboard.html">
+                        <i class="fa-solid fa-house"></i>
+                        Dashboard
+                    </a>
                 </li>
 
                 <li>
@@ -55,40 +57,42 @@
         <!-- Main Content -->
         <main>
 
+            <!-- Header -->
             <header>
 
-                <p>Welcome back, <span id="userName"></span></p>
+                <p>
+                    Welcome back,
+                    <span id="userName"></span>
+                </p>
 
                 <div class="headerActions">
 
                     <div class="searchBox">
                         <i class="fa-solid fa-magnifying-glass"></i>
-
                         <input type="text" placeholder="Search tasks...">
                     </div>
 
-                    <i class="fa-solid fa-moon"></i>
+                    <i class="fa-solid fa-moon" id="themeToggle"></i>
 
                     <i class="fa-solid fa-user"></i>
 
                 </div>
 
             </header>
+
+
+            <!-- Settings Page -->
             <section class="settingsPage">
 
                 <div class="settingsHeading">
-
                     <h2>Settings</h2>
-
                     <p>
                         Manage your preferences and account settings
                     </p>
-
                 </div>
 
 
-                <!-- Profile -->
-
+                <!-- PROFILE -->
                 <div class="settingsCard">
 
                     <div class="settingsCardHeading">
@@ -97,7 +101,9 @@
 
                         <div>
                             <h3>Profile</h3>
-                            <p>Manage your personal information</p>
+                            <p>
+                                Manage your personal information
+                            </p>
                         </div>
 
                     </div>
@@ -111,7 +117,11 @@
                                 Name
                             </label>
 
-                            <input type="text" id="settingsName">
+                            <input
+                                type="text"
+                                id="settingsName"
+                                placeholder="Enter your name"
+                            >
 
                         </div>
 
@@ -149,13 +159,17 @@
                             Save Changes
                         </button>
 
+                        <p
+                            id="profileMessage"
+                            class="settingsMessage"
+                        ></p>
+
                     </div>
 
                 </div>
 
 
-                <!-- Appearance -->
-
+                <!-- APPEARANCE -->
                 <div class="settingsCard">
 
                     <div class="settingsCardHeading">
@@ -164,7 +178,10 @@
 
                         <div>
                             <h3>Appearance</h3>
-                            <p>Customize how Smart To-Do looks</p>
+
+                            <p>
+                                Customize how Smart To-Do looks
+                            </p>
                         </div>
 
                     </div>
@@ -173,16 +190,24 @@
                     <div class="settingsOption">
 
                         <div>
-                            <h4>Dark Mode</h4>
+
+                            <h4>
+                                Dark Mode
+                            </h4>
 
                             <p>
                                 Switch between light and dark appearance
                             </p>
+
                         </div>
+
 
                         <label class="toggle">
 
-                            <input type="checkbox" id="darkModeToggle">
+                            <input
+                                type="checkbox"
+                                id="darkModeToggle"
+                            >
 
                             <span></span>
 
@@ -193,8 +218,7 @@
                 </div>
 
 
-                <!-- Preferences -->
-
+                <!-- PREFERENCES -->
                 <div class="settingsCard">
 
                     <div class="settingsCardHeading">
@@ -202,8 +226,15 @@
                         <i class="fa-solid fa-sliders"></i>
 
                         <div>
-                            <h3>Preferences</h3>
-                            <p>Manage your task preferences</p>
+
+                            <h3>
+                                Preferences
+                            </h3>
+
+                            <p>
+                                Manage your task preferences
+                            </p>
+
                         </div>
 
                     </div>
@@ -212,16 +243,24 @@
                     <div class="settingsOption">
 
                         <div>
-                            <h4>Notifications</h4>
+
+                            <h4>
+                                Notifications
+                            </h4>
 
                             <p>
                                 Receive notifications about your tasks
                             </p>
+
                         </div>
+
 
                         <label class="toggle">
 
-                            <input type="checkbox" id="notificationToggle">
+                            <input
+                                type="checkbox"
+                                id="notificationToggle"
+                            >
 
                             <span></span>
 
@@ -231,11 +270,87 @@
 
                 </div>
 
+
+                <!-- ACCOUNT -->
+                <div class="settingsCard">
+
+                    <div class="settingsCardHeading">
+
+                        <i class="fa-solid fa-database"></i>
+
+                        <div>
+
+                            <h3>
+                                Data & Account
+                            </h3>
+
+                            <p>
+                                Manage your Smart To-Do data
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settingsAction">
+
+                        <div>
+
+                            <h4>
+                                Clear All Tasks
+                            </h4>
+
+                            <p>
+                                Permanently remove all saved tasks
+                            </p>
+
+                        </div>
+
+                        <button
+                            id="clearTasks"
+                            class="dangerBtn"
+                        >
+                            Clear Tasks
+                        </button>
+
+                    </div>
+
+
+                    <div class="settingsAction">
+
+                        <div>
+
+                            <h4>
+                                Reset Profile
+                            </h4>
+
+                            <p>
+                                Remove your saved profile information
+                            </p>
+
+                        </div>
+
+                        <button
+                            id="resetProfile"
+                            class="dangerBtn"
+                        >
+                            Reset Profile
+                        </button>
+
+                    </div>
+
+                </div>
+
             </section>
 
+        </main>
 
     </div>
+
+
     <script src="functionality.js"></script>
+
 </body>
 
 </html>
