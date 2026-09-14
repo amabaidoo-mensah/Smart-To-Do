@@ -709,3 +709,321 @@ header {
 #tasksBg .taskCard.completed .taskPriority span {
     opacity: 0.5;
 }
+
+
+
+/* =========================
+   CALENDAR PAGE
+   ========================= */
+
+#calendarBg main {
+    margin: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Calendar Page */
+
+.calendarPage {
+    margin-top: 10px;
+    background-color: #8a88882c;
+    border-radius: 10px;
+    padding: 15px;
+    flex: 1;
+}
+
+
+/* Calendar Heading */
+
+.calendarHeading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgb(224, 161, 191);
+
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 12px;
+}
+
+.calendarHeading h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.calendarHeading p {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.calendarHeading button {
+    background-color: white;
+    color: #333;
+
+    padding: 9px 14px;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.calendarHeading button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   CALENDAR CARD
+   ========================= */
+
+.calendarCard {
+    background-color: rgba(255, 255, 255, 0.55);
+
+    border-radius: 10px;
+
+    padding: 15px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+
+/* Calendar Header */
+
+.calendarCard .calendarHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 12px;
+}
+
+.calendarCard .calendarHeader h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.calendarCard .calendarHeader button {
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    border-radius: 7px;
+
+    background-color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.calendarCard .calendarHeader button:hover {
+    background-color: #a685f2;
+    color: white;
+}
+
+
+/* =========================
+   DAYS OF THE WEEK
+   ========================= */
+
+.calendarCard .calendarDays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 4px;
+
+    margin-bottom: 5px;
+}
+
+.calendarCard .calendarDays span {
+    text-align: center;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    color: #555;
+}
+
+
+/* =========================
+   CALENDAR DATES
+   ========================= */
+
+.calendarCard .calendarDates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 4px;
+}
+
+.calendarCard .calendarDates span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 35px;
+
+    font-size: 0.8rem;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.calendarCard .calendarDates span:hover {
+    background-color: rgba(166, 133, 242, 0.25);
+}
+
+
+/* Today's Date */
+
+.calendarCard .calendarDates span.today {
+    background-color: #a685f2;
+    color: white;
+
+    font-weight: 700;
+}
+
+
+/*TASK SECTIONS*/
+
+.calendarTasks {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 12px;
+}
+
+
+/* Today's Tasks + Upcoming Tasks */
+
+.todayTasks,
+.upcomingTasks {
+    flex: 1;
+
+    background-color: rgba(255, 255, 255, 0.55);
+
+    border-radius: 10px;
+
+    padding: 15px;
+}
+
+
+/* Section Header */
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+
+.sectionHeader h3 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+/* Task List */
+
+.calendarTaskList {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+/* TASK INDICATOR */
+
+.calendarCard .calendarDates span.hasTask {
+    position: relative;
+}
+
+.calendarCard .calendarDates span.hasTask::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #a685f2;
+}
+
+
+/* GOOGLE CALENDAR BUTTON */
+
+.calendarTask {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.calendarTask > div {
+    flex: 1;
+}
+
+.calendarTask h4 {
+    font-size: 0.85rem;
+}
+
+.calendarTask p {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 3px;
+}
+
+.calendarTask span {
+    padding: 4px 7px;
+    border-radius: 5px;
+    font-size: 0.65rem;
+    font-weight: 700;
+}
+
+.calendarTask span.high {
+    background-color: #ffd6d6;
+    color: #c62828;
+}
+
+.calendarTask span.medium {
+    background-color: #fff0c2;
+    color: #a66a00;
+}
+
+.calendarTask span.low {
+    background-color: #d7f5df;
+    color: #238636;
+}
+
+.googleCalendarBtn {
+    border: none;
+    background-color: #a685f2;
+    color: white;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.googleCalendarBtn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
