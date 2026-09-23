@@ -4,6 +4,11 @@ Smart To-Do is a personalized task management web application designed to help u
 
 The application allows users to create and manage tasks, monitor their progress, view tasks on a calendar, personalize their profile, and switch between light and dark modes.
 
+## Live Demo
+
+[View the live version of Smart To-Do](https://amabaidoo-mensah.github.io/Smart-To-Do/)
+
+
 ## Features
 
 ### User Onboarding
